@@ -208,6 +208,7 @@ function getDate(date) {
  * @param {number} id - The ID of the card to be opened.
  */
 function openCard(id) {
+  isOpenCard = 1;
   document.getElementById("board_openCard").innerHTML = /*html*/`
                     <div class="board_taskcard" id="boardTaskCard" >
                         <div class="board_innertaskcard" id="boardInnerTask" >

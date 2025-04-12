@@ -1,3 +1,4 @@
+let isOpenCard = 0;
 
 
 /**
@@ -222,39 +223,19 @@ function openDialog(id) {
     openCard(id);
 }
 
-
 /**
  * function closebyclick
  * @param {
-* } event 
-*/
-function closeTaskByClick(event) {
-       if (event.target.nodeName != "DIV" &&
-          event.target.id == "board_addTask"
-       ) {
-        closeTaskOutside()
-       }
-   
-}
-
-
-/**
- * function closebyclick
- * @param {
-* } event 
-*/
+ * } event
+ */
 function closeByClick(event) {
-       if (event.target.nodeName != "DIV" &&
-           event.target.id == "board_openCard"
-       ) {
-           closeOutside();
-       }
-   
-}
-
-function closeTaskOutside() {
-  clearInputs()
-  document.getElementById("board_addTask").classList.add("d-none");
+    if (isOpenCard) {
+        if (event.target.nodeName != "DIV" &&
+            event.target.id == "board_openCard"
+        ) {
+            closeOutside();
+        }
+    }
 }
 
 
@@ -271,6 +252,7 @@ async function closeDialog() {
     document.getElementById("board_openCard").classList.add("d-none");
     await writeServer();
     updateHTML();
+    isOpenCard = 1;
 }
 
 
